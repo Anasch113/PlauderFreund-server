@@ -3,10 +3,11 @@ import { getGptResponse } from "./gptService.js";
 import { synthesizeTTS } from "./ttsService.js";
 import logger from "../utils/logger.js"; // Assuming you have a logger
 
-
 // Decode Base64 credentials
 const googleCredentials = JSON.parse(
-  Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS, "base64").toString("utf8")
+  Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS, "base64").toString(
+    "utf8"
+  )
 );
 
 const client = new speech.SpeechClient({
@@ -18,7 +19,6 @@ const client = new speech.SpeechClient({
 });
 
 export function createSTTStream(socket, sttStreams) {
-
   const request = {
     config: {
       encoding: "LINEAR16", // ✅ 16-bit PCM
